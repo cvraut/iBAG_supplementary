@@ -41,6 +41,8 @@ jobs:
          name: _book # optional
          # Destination path
          path: _book # optional
+     - name: copy to _site
+       run: cp -r _book/ _site/
      - name: Deploy to GitHub Pages
        uses: Cecilapp/GitHub-Pages-deploy@master
        env:
