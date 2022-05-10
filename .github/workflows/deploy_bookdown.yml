@@ -10,13 +10,21 @@ name: renderbook
 jobs:
   bookdown:
     name: Render-Book
-    runs-on: macOS-latest
+    runs-on: ubuntu-latest
+    container: rocker/tidyverse:latest
     steps:
       - uses: actions/checkout@v1
-      - uses: r-lib/actions/setup-r@v1
-      - uses: r-lib/actions/setup-pandoc@v1
+      - name: get pandoc
+      # note: this is hardcoded to use pandoc-2.17.1.1-amd64.deb !needs to change if the pandoc step fails!
+        run: wget -O pandoc.deb https://github.com/jgm/pandoc/releases/download/2.17.1.1/pandoc-2.17.1.1-1-amd64.deb
+      - name: unpack & install pandoc
+        run: sudo dpkg -i pandoc.deb
+      - name: install tinytex
+        run: apt-get update -qq && apt-get install -y texlive
       - name: Install rmarkdown
-        run: Rscript -e 'install.packages(c("rmarkdown","bookdown"))'
+        run: install2.r --error --deps TRUE rmarkdown
+      - name: Install bookdown
+        run: install2.r --error --deps TRUE bookdown
       - name: Render Book
         run: Rscript -e 'bookdown::render_book("index.Rmd")'
       - uses: actions/upload-artifact@v1
