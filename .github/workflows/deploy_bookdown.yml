@@ -60,7 +60,7 @@ jobs:
           build_dir: _site                     # "_site/" by default
           jekyll: no
           branch: gh_pages
-          commit-message: auto-update of site from main, thanks Mona🐙!
+          commit_message: auto-update of site from main, thanks Mona🐙!
 
 
 
