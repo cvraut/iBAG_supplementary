@@ -59,7 +59,7 @@ jobs:
           email: ${{ secrets.EMAIL }}
           build_dir: _site
           jekyll: no
-          branch: gh_pages
+          branch: gh-pages
           commit_message: 'auto-update of site from main, thanks Mona🐙!'
 
 
