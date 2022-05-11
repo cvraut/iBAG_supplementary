@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>iBAG Supplementary</title>
+  <title>3 Linear iBAG | iBAG Supplementary</title>
   <meta name="description" content="This is a book containing material on iBAG." />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="iBAG Supplementary" />
+  <meta property="og:title" content="3 Linear iBAG | iBAG Supplementary" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book containing material on iBAG." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="iBAG Supplementary" />
+  <meta name="twitter:title" content="3 Linear iBAG | iBAG Supplementary" />
   
   <meta name="twitter:description" content="This is a book containing material on iBAG." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -89,16 +89,16 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">iBAG Supplementary</h1>
-<p class="author"><em>Chinmay Raut</em></p>
-<p class="date"><em>2022-05-11</em></p>
-</div>
-<div id="ibag-integrative-bayesian-analysis-of-the-genome" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">1</span> iBAG: <strong>i</strong>ntegrative <strong>B</strong>ayesian <strong>A</strong>nalysis of the <strong>G</strong>enome<a href="index.html#ibag-integrative-bayesian-analysis-of-the-genome" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>In this book we introduce the iBAG framework.</p>
-<p>The iBAG framework allows us to study the genomic effects from multiple types of genomic data in a hierarchical fashion.</p>
-<p><img src="images/iBAG_intro_pic.PNG" /><!-- --></p>
+<div id="linear-ibag" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Linear iBAG<a href="linear-ibag.html#linear-ibag" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This module fits the linear iBAG models proposed in <a href="https://pubmed.ncbi.nlm.nih.gov/23142963/">Wang et al, 2013</a> and <a href="https://pubmed.ncbi.nlm.nih.gov/23142963/">Jennings et al, 2013</a>. The model fitting and outputs are shown in the Figure below.</p>
+<p><strong>iBAG model fitting</strong>: iBAG uses a hierarchical procedure by breaking the modeling into two parts, a mechanistic component (Step 1) that clarifies the molecular behaviors, mechanisms and relationships between and within the different types of molecular platforms. Subsequently, a clinical component (Step 2) that utilizes this information to assess associations with patient-specific clinical outcomes and/or phenotypes that characterize disease development or progression (e.g. survival times).</p>
+<p><strong>iBAG Model Outputs</strong>:</p>
+<ul>
+<li><p><code>Posterior Probability Plots</code>: Probability plots of the regression coefficients.</p></li>
+<li><p><code>Gene Tables</code>: Table of genes identified to have at least one significant marker by the above posterior probability plots.</p></li>
+<li><p><code>Mechanistic Model Fits</code>: A heatmap of driver genes.</p></li>
+</ul>
 
 </div>
             </section>
@@ -106,8 +106,8 @@
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
