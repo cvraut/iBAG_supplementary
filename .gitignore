@@ -6,6 +6,9 @@ libs/
 **/*.html 
 # ignore all html files except:
 !**/mathjax_header.html
+# make sure to include the .bib files
+!book.bib
+!packages.bib
 # R and Rstudio specific files
 .Rproj.user
 .Rhistory
