@@ -15,3 +15,39 @@ This module fits the linear iBAG models proposed in  [Wang et al, 2013](https://
 
  - `Mechanistic Model Fits`: A heatmap of driver genes.
 
+## Mechanistic Model
+
+The mechanistic model uses the downstream genomic information to model the mrna expression using a GAM fit.
+
+```{r mech_pic,echo=FALSE}
+knitr::include_graphics(rep("./images/mech.png", 1))
+```
+
+*Note:* this model is fit independently across each gene. 
+
+We can theoretically use any technique for the $f(\cdot)$ functions, but the linear iBAG makes use of Generalized Additive Models to fit the highly variable genomic data. 
+
+$$f(X) = \sum_{j=1}^{J} \beta_j b_j(X)$$
+
+Where $J$ is the optimal number of smoothing parameters which is determined by the GAM fit under minimised generalised cross-validation (GCV) score.
+
+$\beta_j$ is the smoothing coefficient estimates which are estimated through GCV as well.
+
+$b(\cdot)$ is the basis function, which in our implementation uses penalized regression splines. 
+
+*Note:* Our mechanistic model does not estimate an intercept & we must 0-mean the mrna expression per gene.
+
+This allows us to come up with a simple expression for calculating Sum of Squares per upstream platform & come up with a formula for Variation Explained by platform. 
+
+$$SSTO = (E[Y]-Y)^2$$
+$$SS_{Di} = SSTO - (f(X_{Di})-Y)^2$$
+$$SSO = SSTO - \sum_{i=1}^{I}SS_{Di}$$
+
+## Clinical Model
+
+The clinical model uses the fits from the mechanistic model to relate to outcome of choice.
+
+```{r clin_pic,echo=FALSE}
+knitr::include_graphics(rep("./images/clin.png", 1))
+```
+
