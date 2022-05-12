@@ -23,7 +23,7 @@
 <meta name="author" content="Chinmay Raut" />
 
 
-<meta name="date" content="2022-05-11" />
+<meta name="date" content="2022-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -70,7 +70,11 @@
 <ul class="summary">
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> iBAG: <strong>i</strong>ntegrative <strong>B</strong>ayesian <strong>A</strong>nalysis of the <strong>G</strong>enome</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
-<li class="chapter" data-level="3" data-path="linear-ibag.html"><a href="linear-ibag.html"><i class="fa fa-check"></i><b>3</b> Linear iBAG</a></li>
+<li class="chapter" data-level="3" data-path="linear-ibag.html"><a href="linear-ibag.html"><i class="fa fa-check"></i><b>3</b> Linear iBAG</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="linear-ibag.html"><a href="linear-ibag.html#mechanistic-model"><i class="fa fa-check"></i><b>3.1</b> Mechanistic Model</a></li>
+<li class="chapter" data-level="3.2" data-path="linear-ibag.html"><a href="linear-ibag.html#clinical-model"><i class="fa fa-check"></i><b>3.2</b> Clinical Model</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -155,6 +159,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

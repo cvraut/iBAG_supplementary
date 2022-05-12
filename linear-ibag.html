@@ -23,7 +23,7 @@
 <meta name="author" content="Chinmay Raut" />
 
 
-<meta name="date" content="2022-05-11" />
+<meta name="date" content="2022-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -70,7 +70,11 @@
 <ul class="summary">
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> iBAG: <strong>i</strong>ntegrative <strong>B</strong>ayesian <strong>A</strong>nalysis of the <strong>G</strong>enome</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
-<li class="chapter" data-level="3" data-path="linear-ibag.html"><a href="linear-ibag.html"><i class="fa fa-check"></i><b>3</b> Linear iBAG</a></li>
+<li class="chapter" data-level="3" data-path="linear-ibag.html"><a href="linear-ibag.html"><i class="fa fa-check"></i><b>3</b> Linear iBAG</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="linear-ibag.html"><a href="linear-ibag.html#mechanistic-model"><i class="fa fa-check"></i><b>3.1</b> Mechanistic Model</a></li>
+<li class="chapter" data-level="3.2" data-path="linear-ibag.html"><a href="linear-ibag.html#clinical-model"><i class="fa fa-check"></i><b>3.2</b> Clinical Model</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -99,7 +103,28 @@
 <li><p><code>Gene Tables</code>: Table of genes identified to have at least one significant marker by the above posterior probability plots.</p></li>
 <li><p><code>Mechanistic Model Fits</code>: A heatmap of driver genes.</p></li>
 </ul>
+<div id="mechanistic-model" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Mechanistic Model<a href="linear-ibag.html#mechanistic-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The mechanistic model uses the downstream genomic information to model the mrna expression using a GAM fit.</p>
+<p><img src="images/mech.png" /><!-- --></p>
+<p><em>Note:</em> this model is fit independently across each gene.</p>
+<p>We can theoretically use any technique for the <span class="math inline">\(f(\cdot)\)</span> functions, but the linear iBAG makes use of Generalized Additive Models to fit the highly variable genomic data.</p>
+<p><span class="math display">\[f(X) = \sum_{j=1}^{J} \beta_j b_j(X)\]</span></p>
+<p>Where <span class="math inline">\(J\)</span> is the optimal number of smoothing parameters which is determined by the GAM fit under minimised generalised cross-validation (GCV) score.</p>
+<p><span class="math inline">\(\beta_j\)</span> is the smoothing coefficient estimates which are estimated through GCV as well.</p>
+<p><span class="math inline">\(b(\cdot)\)</span> is the basis function, which in our implementation uses penalized regression splines.</p>
+<p><em>Note:</em> Our mechanistic model does not estimate an intercept &amp; we must 0-mean the mrna expression per gene.</p>
+<p>This allows us to come up with a simple expression for calculating Sum of Squares per upstream platform &amp; come up with a formula for Variation Explained by platform.</p>
+<p><span class="math display">\[SSTO = (E[Y]-Y)^2\]</span>
+<span class="math display">\[SS_{Di} = SSTO - (f(X_{Di})-Y)^2\]</span>
+<span class="math display">\[SSO = SSTO - \sum_{i=1}^{I}SS_{Di}\]</span></p>
+</div>
+<div id="clinical-model" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Clinical Model<a href="linear-ibag.html#clinical-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The clinical model uses the fits from the mechanistic model to relate to outcome of choice.</p>
+<p><img src="images/clin.png" /><!-- --></p>
 
+</div>
 </div>
             </section>
 
@@ -161,6 +186,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

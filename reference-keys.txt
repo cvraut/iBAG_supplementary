@@ -1,3 +1,5 @@
 ibag-integrative-bayesian-analysis-of-the-genome
 intro
 linear-ibag
+mechanistic-model
+clinical-model
